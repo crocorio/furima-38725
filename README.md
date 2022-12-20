@@ -5,7 +5,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -36,7 +36,7 @@
 | shipping_date_id| integer| null: false                       |
 | price           | integer| null: false                       |
 | user            | references| null: false, foreign_key: true |
-| item_image      | references| null: false, foreign_key: true |
+
 
 
 
@@ -58,7 +58,7 @@
 
 ### Association
 
-- has_one :item
+- belongs_to :item
 - belongs_to :user
   has_one :destination
 
@@ -69,7 +69,7 @@
 
 | Column          | Type      | Options     |
 | ----------------| --------- | ----------- |
-| postal_code     | integer   | null: false |
+| postal_code     | string    | null: false |
 | prefecture_id   | integer   | null: false |
 | city            | string    | null: false |
 | block           | string    | null: false |
