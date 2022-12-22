@@ -60,6 +60,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
       end
+      it '半角英数字ではない場合' do
+        @user.password = 'kkkk２２２'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+      end
       it 'first nameがない場合' do
         @user.first_name = ''
         @user.valid?
