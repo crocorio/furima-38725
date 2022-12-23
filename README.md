@@ -30,7 +30,7 @@
 | name            | string | null: false                       |
 | description     | text   | null: false                       |
 | category_id     | integer| null: false                       |
-| sales_status_id | integer| null: false                       |
+| condition_id    | integer| null: false                       |
 | shipping_cost_id| integer| null: false                       |
 | prefecture_id   | integer| null: false                       |
 | shipping_date_id| integer| null: false                       |
