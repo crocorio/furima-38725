@@ -12,6 +12,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' }
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 
   validates :user, presence: true
   validates :name, presence: true
@@ -25,11 +28,11 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :condition_id, numericality: { other_than: 1 } 
-  validates :prefecture_id, numericality: { other_than: 1 } 
-  validates :shipping_cost_id, numericality: { other_than: 1 }
-  validates :shipping_date_id, numericality: { other_than: 1 }  
+  validates :category_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :shipping_cost_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :shipping_date_id, numericality: { other_than: 1, message: "can't be blank" }  
 
 
 end
