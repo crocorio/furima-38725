@@ -19,9 +19,9 @@ class OrderDestination
   
   end 
 
-  validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
 
-  validates :building
+  validate :building
 
 
   def save
