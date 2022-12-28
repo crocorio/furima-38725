@@ -19,16 +19,15 @@ class OrderDestination
   
   end 
 
-  validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 1, message: "Select"}
 
   validate :building
 
 
   def save
-    
     order = Order.create(user_id: user_id, item_id: item_id)
     
-    Destination.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, block: block, building: building, phone_number: phone_number, order_id: order_id)
+    Destination.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, block: block, building: building, phone_number: phone_number, order_id: order.id)
   end
 
 end
