@@ -1,21 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe OrderDestination, type: :model do
-  
-      before do
-      user = FactoryBot.create(:user)
-      item = FactoryBot.create(:item)
-      @order_destination = FactoryBot.build(:order_destination, user_id: user.id, item_id: item.id)
-    end
+  before do
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order_destination = FactoryBot.build(:order_destination, user_id: user.id, item_id: item.id)
+  end
 
-
-    describe '商品の購入' do
+  describe '商品の購入' do
     context '内容に問題ない場合' do
-      it 'すべての値が正しく入力されていれば保存できること' do 
+      it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order_destination).to be_valid
       end
       it 'buildingは空でも保存できること' do
-        @order_destination.building = ""
+        @order_destination.building = ''
         expect(@order_destination).to be_valid
       end
     end
@@ -23,8 +21,8 @@ RSpec.describe OrderDestination, type: :model do
     context '内容に問題がある場合' do
       it 'credit card info が空だと保存できないこと' do
         @order_destination.token = nil
-      @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Token can't be blank")
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Token can't be blank")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_destination.postal_code = '1234567'
@@ -44,7 +42,7 @@ RSpec.describe OrderDestination, type: :model do
       it 'phone number が数字以外では保存できない' do
         @order_destination.phone_number = 'asdfghjklz'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'cityが空だと保存できない' do
         @order_destination.city = ''
@@ -57,14 +55,14 @@ RSpec.describe OrderDestination, type: :model do
         expect(@order_destination.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'blockが空だと保存できない' do
-        @order_destination.block = ""
+        @order_destination.block = ''
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Block can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_destination.user_id = nil
         @order_destination.valid?
-        
+
         expect(@order_destination.errors.full_messages).to include("User can't be blank")
       end
       it 'itemが紐付いていないと保存できないこと' do
@@ -72,7 +70,6 @@ RSpec.describe OrderDestination, type: :model do
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Item can't be blank")
       end
-
+    end
+  end
 end
-end 
-end 
