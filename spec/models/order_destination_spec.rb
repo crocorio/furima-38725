@@ -39,10 +39,10 @@ RSpec.describe OrderDestination, type: :model do
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone number が空だと保存できない' do
-        @order_destination.phone_number = ''
+      it 'phone number が数字以外では保存できない' do
+        @order_destination.phone_number = 'asdfghj'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include("Phone number can't be blank")
+        expect(@order_destination.errors.full_messages).to include("Phone number is invalid.")
       end 
       it 'phone numberが9桁以下では購入できない' do
         @order_destination.phone_number = '0804647'
