@@ -9,14 +9,14 @@ class OrderDestination
     validates :city
     validates :block
 
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid.' }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'が無効です。' }
 
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'が無効です。次のように入力してください (例 123-4567)' }
 
     validates :token
   end
 
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: "を選択してください" }
 
   validate :building
 
