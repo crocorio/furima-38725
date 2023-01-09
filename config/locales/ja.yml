@@ -18,3 +18,4 @@ ja:
         prefecture_id: 都道府県
         block: 番地
         building: 建物名    
+        token: トークン

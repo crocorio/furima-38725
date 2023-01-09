@@ -22,7 +22,7 @@ RSpec.describe OrderDestination, type: :model do
       it 'credit card info が空だと保存できないこと' do
         @order_destination.token = nil
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include("Tokenを入力してください")
+        expect(@order_destination.errors.full_messages).to include("トークンを入力してください")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_destination.postal_code = '1234567'
