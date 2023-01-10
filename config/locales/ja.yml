@@ -8,6 +8,20 @@ ja:
         last_name: 名字
         last_name_kana: 名字（カタカナ）
         first_name_kana: お名前（カタカナ）
+      
+      item: 
+         category_id: カテゴリ
+         price: 価格
+         name: 名前
+         description: 詳細
+         image: 画像
+         condition_id: 状態
+         prefecture_id: 発送元の地域 
+         shipping_cost_id: 配送料の負担
+         shipping_date_id: 発送までの日数 
+        
+
+
 
   activemodel:
     attributes:
